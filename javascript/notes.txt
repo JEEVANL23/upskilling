@@ -1,0 +1,126 @@
+######### VARIABLES
+
+js is high level , oops , multi-paradim programming language
+value - it is a piece of data
+variables - holds the vakue
+
+camel case - when more than one word is there in variable name
+firstName - standard
+first_name
+
+syntax error - mistake in code syntax
+
+all upper case variables aer constants - values that never changes
+
+
+################# DATA TYPES
+
+1. primitive - number , string , bool, undefined - empty value, null - empty value,
+symbol - value is unique and cannot be changed , big int 
+
+dynamic typing - do not have to define the data tyoe of the value stored in variable , data tyoes are defined automatically
+
+value has type not the variable 
+advantage of dynamic typing is assigning new value with diff data type to the same variable name
+
+
+string - white
+
+typeof null will be object - it is a bug
+but type of undefined will be undefined
+
+undefined is value taken by the variable that is not yet defined (empty variable)
+
+
+################ DECLARING VARIABLES
+
+let and const are introduced in es6 
+var is old
+
+let variable value can be changed later , reassigning value to variable , variables are mutable
+value may or may not be assigned to let variable , let is block scoped
+
+const value cannot be changed , immutable variable , initial value should be declared, block scoped 
+
+var should be avoided , same as let , function scoped
+
+
+############## OPERATORS
+
+1. MATHEMATIC OPERATORS
+// 2 ** 3 = 2 x 2 x 2 = 8
+
+
+OPERATORS PRECEDENCE 
+
+math operator are executed before comparison operators - left to right math
+
+assignement = right to left
+
+
+############# STRINGS
+
+template literals - use `I'm ${variable}`;
+in this also it converts the number into strings
+
+
+############## TYPE CONVERSIONS
+changing data types
+type conversion is manually we convert from one type to another type
+type coercion is js automatically converts type bts for us, completely hidden
+
+strings will be white in console log and numbers will be purple in console
+
+NaN is Not a number - it occurs whenever the oprations that involves a number fails to produce a new number - it is a invalid number
+type of NaN is number
+
+in js only we can convert 3 types that is , to number , to string , to boolean
+
+type coercion happens when ever a operation is dealing with 2 different datatypes , js converts types behind the scene 
+if there is string and number , in coercion number will be converted into string
+
+not all operators does type coercion 
+
++ : converts number into strings
+- , * , / : takes numbers as numbers
+
+####################### Truthy and Falsy values
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
