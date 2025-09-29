@@ -1,0 +1,455 @@
+1. What are the different data types present in javascript?
+To know the type of a JavaScript variable, we can use the typeof operator.
+
+1. Primitive types
+
+String - It represents a series of characters and is written with quotes. A string can be represented using a single or a double quote.
+
+Example :
+
+var str = "Vivek Singh Bisht"; //using double quotes
+var str2 = 'John Doe'; //using single quotes
+Number - It represents a number and can be written with or without decimals.
+Example :
+
+var x = 3; //without decimal
+var y = 3.6; //with decimal
+BigInt - This data type is used to store numbers which are above the limitation of the Number data type. It can store large integers and is represented by adding “n” to an integer literal.
+Example :
+
+var bigInteger =  234567890123456789012345678901234567890;
+Boolean - It represents a logical entity and can have only two values : true or false. Booleans are generally used for conditional testing.
+Example :
+
+var a = 2;
+var b =  3;
+var c =  2;
+(a == b) // returns false
+(a == c) //returns true
+Undefined - When a variable is declared but not assigned, it has the value of undefined and it’s type is also undefined.
+Example :
+
+var x; // value of x is undefined
+var y = undefined; // we can also set the value of a variable as undefined
+Null - It represents a non-existent or a invalid value.
+Example :
+
+var z = null;
+Symbol - It is a new data type introduced in the ES6 version of javascript. It is used to store an anonymous and unique value.
+Example :
+
+var symbol1 = Symbol('symbol');
+typeof of primitive types :
+typeof "John Doe" // Returns "string"
+typeof 3.14 // Returns "number"
+typeof true // Returns "boolean"
+typeof 234567890123456789012345678901234567890n // Returns bigint
+typeof undefined // Returns "undefined"
+typeof null // Returns "object" (kind of a bug in JavaScript)
+typeof Symbol('symbol') // Returns Symbol
+
+
+#######################################################################################################
+2. Non-primitive types
+
+Primitive data types can store only a single value. To store multiple and complex values, non-primitive data types are used.
+Object - Used to store collection of data.
+Example:
+// Collection of data in key-value pairs
+
+var obj1 = {
+   x:  43,
+   y:  "Hello world!",
+   z: function(){
+      return this.x;
+   }
+}
+      
+// Collection of data as an ordered list
+     
+var array1 = [5, "Hello", true, 4.1]; 
+
+
+
+@#################################################################################################
+2. Explain Hoisting in javascript.
+Hoisting is the default behaviour of javascript where all the variable and function declarations are moved on top.
+
+
+This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
+
+Example 1:
+
+hoistedVariable = 3;
+console.log(hoistedVariable); // outputs 3 even when the variable is declared after it is initialized	
+var hoistedVariable;
+Example 2:
+
+hoistedFunction();  // Outputs " Hello world! " even when the function is declared after calling
+
+function hoistedFunction(){ 
+  console.log(" Hello world! ");
+} 
+Example 3:
+
+// Hoisting takes place in the local scope as well
+function doSomething(){
+  x = 33;
+  console.log(x);
+  var x;
+} 
+doSomething(); // Outputs 33 since the local variable “x” is hoisted inside the local scope
+
+Note - Variable initializations are not hoisted, only variable declarations are hoisted:
+var x;
+console.log(x); // Outputs "undefined" since the initialization of "x" is not hoisted
+x = 23;
+Note - To avoid hoisting, you can run javascript in strict mode by using “use strict” on top of the code:
+"use strict";
+x = 23; // Gives an error since 'x' is not declared
+var x; 
+
+
+########################################################################################
+4. Difference between “ == “ and “ === “ operators.
+Both are comparison operators. The difference between both the operators is that “==” is used to compare values whereas, “ === “ is used to compare both values and types.
+
+Example:
+
+var x = 2;
+var y = "2";
+(x == y)  // Returns true since the value of both x and y is the same
+(x === y) // Returns false since the typeof x is "number" and typeof y is "string"
+
+
+##########################################################################################
+5. Difference between var and let keyword in javascript.
+
+1. Scope
+
+var → Function-scoped (or global).
+
+let → Block-scoped ({ ... }).
+
+const → Block-scoped ({ ... }).
+
+if (true) {
+  var a = 10;
+  let b = 20;
+  const c = 30;
+}
+console.log(a); // ✅ 10
+console.log(b); // ❌ ReferenceError
+console.log(c); // ❌ ReferenceError
+
+🔹 2. Hoisting
+
+var → Hoisted & initialized as undefined.
+
+let → Hoisted but not initialized (TDZ).
+
+const → Same as let (TDZ).
+
+console.log(x); // ✅ undefined
+var x = 5;
+
+console.log(y); // ❌ ReferenceError
+let y = 10;
+
+console.log(z); // ❌ ReferenceError
+const z = 15;
+
+🔹 3. Redeclaration
+
+var → Allowed in the same scope.
+
+let → ❌ Not allowed.
+
+const → ❌ Not allowed.
+
+var name = "Alice";
+var name = "Bob";   // ✅ allowed
+
+let age = 25;
+let age = 30;       // ❌ SyntaxError
+
+const pi = 3.14;
+const pi = 3.1415;  // ❌ SyntaxError
+
+🔹 4. Reassignment
+
+var → Allowed.
+
+let → Allowed.
+
+const → ❌ Not allowed (must stay constant).
+
+var city = "Paris";
+city = "London";   // ✅
+
+let country = "India";
+country = "Japan"; // ✅
+
+const planet = "Earth";
+planet = "Mars";   // ❌ TypeError
+
+🔹 5. Global Object
+
+var → Becomes a property of global object (window in browsers).
+
+let / const → Do not attach to global object.
+
+var x = 100;
+let y = 200;
+const z = 300;
+
+console.log(window.x); // ✅ 100
+console.log(window.y); // ❌ undefined
+console.log(window.z); // ❌ undefined
+
+#####################################################################
+
+What is Type Coercion?
+
+Type coercion is the process where JavaScript automatically converts one data type into another so that operations can be performed.
+This happens because JavaScript is a dynamically typed and weakly typed language.
+
+Example:
+
+console.log("5" + 2); // "52"   (number → string)
+console.log("5" - 2); // 3     (string → number)
+
+
+Here:
+
+"5" + 2 → 2 is coerced to a string → "5" + "2" = "52".
+
+"5" - 2 → "5" is coerced to a number → 5 - 2 = 3.
+
+🔹 Types of Coercion
+1. Implicit Coercion (done automatically by JS)
+
+JavaScript converts values silently depending on the operator/context.
+
+➤ String Coercion
+
+Happens with the + operator when one operand is a string:
+
+console.log("Hello" + 5); // "Hello5"
+console.log(true + " JS"); // "true JS"
+
+➤ Number Coercion
+
+Happens with -, *, /, comparison operators:
+
+console.log("10" - 1);   // 9   ("10" → 10)
+console.log("6" * "2");  // 12  (both → numbers)
+console.log(true + 1);   // 2   (true → 1)
+console.log(false - 1);  // -1  (false → 0)
+
+➤ Boolean Coercion
+
+Values are coerced to true or false in logical contexts (like if, while).
+
+if ("hello") {   // non-empty string → true
+  console.log("Truthy!");
+}
+
+if (0) {         // 0 → false
+  console.log("Won't run");
+}
+
+
+Truthy values: all numbers except 0, non-empty strings, objects, arrays, etc.
+Falsy values: 0, "" (empty string), null, undefined, NaN, false.
+
+2. Explicit Coercion (done manually by developer)
+
+You convert values using functions or operators.
+
+// To Number
+console.log(Number("123"));  // 123
+console.log(parseInt("50px")); // 50
+console.log(+ "99"); // 99 (unary plus)
+
+// To String
+console.log(String(123)); // "123"
+console.log((123).toString()); // "123"
+
+// To Boolean
+console.log(Boolean(1)); // true
+console.log(Boolean(0)); // false
+console.log(!!"hello");  // true (double NOT trick)
+
+🔹 Special Cases (Gotchas)
+console.log([] + []);      // ""  (empty string)
+console.log([] + {});      // "[object Object]"
+console.log({} + []);      // 0  (because `{}` is treated as block)
+console.log(null + 1);     // 1  (null → 0)
+console.log(undefined + 1); // NaN (undefined → NaN)
+
+
+
+The Three Types of Conversion
+
+JavaScript internally converts values into three primitive types when needed:
+
+To String
+
+To Number
+
+To Boolean
+
+🔹 1. String Coercion
+
+Happens when you use the + operator and one operand is a string.
+
+console.log("5" + 1);   // "51"
+console.log(true + "x"); // "truex"
+
+
+Why?
+
++ is both a numeric addition and string concatenation operator.
+
+If either operand is a string → JS coerces the other into a string.
+
+🔹 2. Number Coercion
+
+Happens in arithmetic (-, *, /, %) or comparison (<, >, ==) contexts.
+
+console.log("5" - 2); // 3   ("5" → number)
+console.log("10" * "2"); // 20
+console.log(true - 1);   // 0 (true → 1)
+console.log(false + 2);  // 2 (false → 0)
+
+
+🔹 Special cases:
+
+console.log(null + 1);       // 1   (null → 0)
+console.log(undefined + 1);  // NaN (undefined → NaN)
+
+🔹 3. Boolean Coercion
+
+Happens in conditional statements (if, while, for, ? :) and logical operators (||, &&, !).
+
+Falsy values in JS:
+
+false
+
+0, -0
+
+"" (empty string)
+
+null
+
+undefined
+
+NaN
+
+Everything else is truthy (including "0", "false", [], {}).
+
+if ("0") console.log("Runs"); // ✅ truthy (non-empty string)
+if ([]) console.log("Runs");  // ✅ truthy (empty array is object)
+if (0) console.log("Skip");   // ❌ falsy
+
+🔹 Abstract Operations Behind Coercion
+
+The ECMAScript specification defines internal abstract operations that handle coercion:
+
+1. ToPrimitive(input, [PreferredType])
+
+Converts an object into a primitive value.
+Steps:
+
+If input is already primitive → return it.
+
+Else, call valueOf() → if it gives primitive, use it.
+
+Else, call toString() → use that result.
+
+Example:
+
+console.log([1,2].toString()); // "1,2"
+console.log([].valueOf());     // []
+console.log({}.toString());    // "[object Object]"
+
+console.log([] + {}); // "[object Object]"  ([] → "", {} → "[object Object]")
+console.log({} + []); // 0  ({} is seen as block, +[] → 0)
+
+2. ToNumber(value)
+
+Rules:
+
+undefined → NaN
+
+null → 0
+
+true → 1
+
+false → 0
+
+Strings → parsed as numbers if possible, otherwise NaN.
+
+console.log(Number("123"));  // 123
+console.log(Number("abc"));  // NaN
+console.log(Number(true));   // 1
+console.log(Number(null));   // 0
+
+3. ToString(value)
+
+Rules:
+
+null → "null"
+
+undefined → "undefined"
+
+true → "true"
+
+false → "false"
+
+Arrays → elements joined by commas.
+
+Objects → "[object Object]" (unless custom toString).
+
+4. ToBoolean(value)
+
+We already covered truthy/falsy above.
+
+🔹 Implicit vs Explicit Coercion
+Implicit (done by JS automatically)
+console.log("5" * 2); // 10   (string → number)
+console.log("5" + 2); // "52" (number → string)
+console.log(1 == "1"); // true (string → number)
+
+Explicit (done by you)
+Number("123");    // 123
+String(123);      // "123"
+Boolean(0);       // false
+!!"hello";        // true (double NOT trick)
+
+🔹 Loose Equality (==) vs Strict Equality (===)
+
+== (loose equality): allows type coercion before comparison.
+
+=== (strict equality): no type conversion, both type & value must match.
+
+console.log(1 == "1");  // true (string → number)
+console.log(1 === "1"); // false (different types)
+
+
+Tricky cases:
+
+console.log(0 == false);    // true  (false → 0)
+console.log("" == false);   // true  ("" → 0, false → 0)
+console.log(null == undefined); // true (special rule)
+console.log(null === undefined); // false
+
+🔹 Famous Weird Coercion Examples
+console.log([] + []);   // ""   (both toString → "")
+console.log([] + {});   // "[object Object]"
+console.log({} + []);   // 0   ({} seen as block, +[] → 0)
+console.log([1,2] + [3,4]); // "1,23,4"
+
+
+########################################################################################################
