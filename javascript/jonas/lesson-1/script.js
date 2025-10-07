@@ -100,6 +100,17 @@
 // 'use strict'; // strict mode - it enforces strict parsing and error handling in the code at runtime
 
 // function declaration is different , function expression is different
+// FD can be called before their def
+// Function Declaration
+// Definition: A standalone statement that defines a function with a name. 
+// Hoisting: Function declarations are hoisted to the top of their scope, 
+// meaning they can be called and used before they appear in the code
+
+// Function Expression 
+// Definition: A function created as a part of an expression, often assigned to a variable. 
+// It can be anonymous (no name) or named.
+// Hoisting: Function expressions are not fully hoisted, so they cannot be called before the line of code 
+// where the expression is defined
 // FD 
 // const age1 = calcAge1(1991);
 // function calcAge1(birthYear){
@@ -187,6 +198,7 @@
 
 //#################################### LOOPS ################## 
 // it is a control structure
+// for(initialize; condition; increment/decrement)
 
 
 // for loops keeps running while the condition is true
@@ -235,17 +247,33 @@
 
 // }
 
-
 // looping array backwards and loop in the loop
 
- const jeevan = [
-    'Jeevan',
-    'L',
-    2025 - 2000,
-    'software developer',
-    ['a','b','c'],
-    true
- ]
+//  const jeevan = [
+//     'Jeevan',
+//     'L',
+//     2025 - 2000,
+//     'software developer',
+//     ['a','b','c']
+//  ]
+
+//  for(let i = jeevan.length - 1; i >= 0; i--){
+//       console.log(i, jeevan[i])
+//  }
 
 
-for(i =  )
+//  for(exercise = 1; exercise < 4; exercise++){
+//    console.log(`exercise ${exercise}`)
+
+//    for(rep=1; rep < 6; rep++){
+//       console.log(`exercise ${exercise} rep ${rep}`)
+//    }
+//  }
+
+
+// while loop
+// while(condition){
+// }
+
+// ###################################### DOM MANIPULATION #################################
+
